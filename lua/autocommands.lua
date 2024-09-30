@@ -1,13 +1,24 @@
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+local mygroup = augroup("Clayton", {})
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
+})
+
+-- Trim whitespace on save
+autocmd({ "BufWritePre" }, {
+  group = mygroup,
+  pattern = "*",
+  command = [[%s/\s+$//e]],
 })
