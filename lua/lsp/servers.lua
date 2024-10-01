@@ -14,12 +14,12 @@ return {
       vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end,
     settings = {
-      ['rust-analyzer'] = {
+      ["rust-analyzer"] = {
         cargo = {
           autoReload = true,
         },
         check = {
-          command = 'clippy',
+          command = "clippy",
         },
       },
     },
@@ -29,15 +29,18 @@ return {
     settings = {
       Lua = {
         completion = {
-          callSnippet = 'Replace',
+          callSnippet = "Replace",
         },
         format = {
           defaultConfig = {
-            call_arg_parentheses = 'keep',
+            call_arg_parentheses = "keep",
           },
         },
         -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        diagnostics = { disable = { 'missing-fields' } },
+        diagnostics = {
+          disable = { "missing-fields" },
+          globals = { "vim", "require" },
+        },
       },
     },
   },

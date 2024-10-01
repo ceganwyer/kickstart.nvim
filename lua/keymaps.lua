@@ -38,6 +38,18 @@ map("<C-l>", "<C-w><C-l>", "Move focus to the right window")
 map("<C-j>", "<C-w><C-j>", "Move focus to the lower window")
 map("<C-k>", "<C-w><C-k>", "Move focus to the upper window")
 
+-- Move visual selections
+map("H", "<gv", "Move selection left", "v")
+map("J", ":m '>+1<CR>gv=gv", "Move selection up", "v")
+map("K", ":m '<-2<CR>gv=gv", "Move selection down", "v")
+map("H", ">gv", "Move selection right", "v")
+
+-- Recenter screen when jumping up/down
+map("<C-d>", "<C-d>zz")
+map("<C-u>", "<C-u>zz")
+
 -- Plugin mangers
 map("<leader>pi", require("lazy").install, "Lazy: [I]nstall")
-map("<leader>ps", require("lazy").home, "Lazy: [S]tatus")
+map("<leader>ps", "<cmd>Lazy<cr>", "Lazy: [S]tatus")
+map("<leader>pm", "<cmd>Mason<cr>", "[M]ason: Status")
+map("<leader>pM", "<cmd>MasonUpdate<cr>", "[M]ason: Update")

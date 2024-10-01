@@ -21,6 +21,7 @@ require("lazy").setup({
   require("plugins.neo-tree"), -- File tree
   require("plugins.telescope"), -- Ultimate fuzzy finder
   require("plugins.treesitter"), -- Tree parsing
+  require("plugins.ufo"),
   require("plugins.which-key"), -- Keymap
 }, {
   ui = {

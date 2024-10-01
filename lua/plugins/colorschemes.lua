@@ -5,9 +5,6 @@ return {
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
   {
-    "folke/tokyonight.nvim",
-  },
-  {
     "myagko/nymph",
     branch = "Nvim",
     priority = 1000,
@@ -21,4 +18,7 @@ return {
       vim.cmd.hi("Comment gui=none")
     end,
   },
+  "folke/tokyonight.nvim",
+  "aliqyan-21/darkvoid.nvim",
+  "ellisonleao/gruvbox.nvim",
 }
