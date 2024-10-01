@@ -12,17 +12,56 @@ return {
           hover = true,
           on_attach = function(client, bufnr)
             local crates = require("crates")
-            local function opts(desc)
-              return { buffer = bufnr, silent = true, remap = false, desc = desc }
-            end
+            local function opts(desc) return { buffer = bufnr, silent = true, remap = false, desc = desc } end
 
-            require("which-key").add({ "<leader>C", group = "[C]argo", icon = { icon = "" } })
-            vim.keymap.set("n", "<leader>Ct", crates.toggle, opts("Crates [T]oggle"))
-            vim.keymap.set("n", "<leader>Cr", crates.reload, opts("Crates [R]eload"))
-            vim.keymap.set("n", "<leader>Cv", crates.show_versions_popup, opts("Crate [V]ersions"))
-
-            vim.keymap.set("n", "<leader>Cu", crates.update_crate, opts("[U]pdate Crate"))
-            vim.keymap.set("n", "<leader>CU", crates.upgrade_crate, opts("[U]pgrade Crate"))
+            require("which-key").add({
+              { "<leader>C", group = "[C]argo", icon = { cat = "filetype", name = "rust" } },
+              {
+                "<leader>Ct",
+                function() crates.toggle() end,
+                desc = "Crates [T]oggle",
+                buffer = bufnr,
+                silent = true,
+                remap = false,
+                icon = { cat = "filetype", name = "rust" },
+              },
+              {
+                "<leader>Cr",
+                function() crates.reload() end,
+                desc = "Crates [R]eload",
+                buffer = bufnr,
+                silent = true,
+                remap = false,
+                icon = { cat = "filetype", name = "rust" },
+              },
+              {
+                "<leader>Cv",
+                function() crates.show_versions_popup() end,
+                desc = "Crates [V]ersions",
+                buffer = bufnr,
+                silent = true,
+                remap = false,
+                icon = { cat = "filetype", name = "rust" },
+              },
+              {
+                "<leader>Cu",
+                function() crates.update_crate() end,
+                desc = "[U]pdate Crate",
+                buffer = bufnr,
+                silent = true,
+                remap = false,
+                icon = { cat = "filetype", name = "rust" },
+              },
+              {
+                "<leader>CU",
+                function() crates.upgrade_crate() end,
+                desc = "[U]pgrade Crate",
+                buffer = bufnr,
+                silent = true,
+                remap = false,
+                icon = { cat = "filetype", name = "rust" },
+              },
+            })
           end,
         },
         completion = {

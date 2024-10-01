@@ -1,5 +1,4 @@
 return { -- Automatic fold generation
-  -- TODO: finish setting this up.
   "kevinhwang91/nvim-ufo",
   dependencies = { "kevinhwang91/promise-async" },
   event = "BufRead",

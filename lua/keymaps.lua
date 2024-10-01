@@ -9,10 +9,10 @@ end
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
-map("<Esc>", "<cmd>nohlsearch<CR>", "Clear highlights")
+vim.g.map("<Esc>", "<cmd>nohlsearch<CR>", "Clear highlights")
 
 -- Diagnostic keymaps
-map("<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
+map("<leader>q", vim.diagnostic.setloclist, "[Q]uickfix list")
 
 -- Open netrw
 map("<leader>e", "<cmd>Explore<cr>", "Open File [E]xplorer")

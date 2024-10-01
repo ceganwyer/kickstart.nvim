@@ -16,6 +16,7 @@ require("lazy").setup({
   require("plugins.colorschemes"), -- Color schemes
   require("plugins.crates"), -- Rust crate managent
   require("plugins.git"), -- Git related plugins
+  require("plugins.harpoon"), -- Harpoon
   require("plugins.mini"), -- Collections of small modular plugins
   require("plugins.qol"), -- Small quality of life plugins
   require("plugins.neo-tree"), -- File tree

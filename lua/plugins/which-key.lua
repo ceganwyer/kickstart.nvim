@@ -1,24 +1,13 @@
--- NOTE: Plugins can also be configured to run Lua code when they are loaded.
---
--- This is often very useful to both group configuration, as well as handle
--- lazy loading plugins that don't need to be loaded immediately at startup.
---
--- For example, in the following configuration, we use:
---  event = 'VimEnter'
---
--- which loads which-key before all the UI elements are loaded. Events can be
--- normal autocommands events (`:help autocmd-events`).
---
--- Then, because we use the `config` key, the configuration only runs
--- after the plugin has been loaded:
---  config = function() ... end
-
 return {
-  {
-    -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
     event = "VimEnter", -- Sets the loading event to 'VimEnter'
     opts = {
+      preset = "helix",
+      keys = {
+        scroll_up = "<M-k>",
+        scroll_down = "<M-j>",
+      },
       icons = {
         -- set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
@@ -55,19 +44,23 @@ return {
           F12 = "<F12>",
         },
       },
-      sort = { "group", "alphanum", "mod" },
+      sort = { "local", "group", "alphanum", "mod" },
       -- Document existing key chains
       spec = {
         { "<leader>b", group = "[B]uffer" },
         { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
         { "<leader>d", group = "[D]ocument" },
+        { "<leader>g", group = "[G]it", mode = { "n", "v" }, icon = { cat = "filetype", name = "git" } },
+        { "<leader>h", group = "[H]arpoon", icon = "󰈸" },
         { "<leader>l", group = "[L]SP" },
         { "<leader>p", group = "[P]lugins" },
         { "<leader>r", group = "[R]ename" },
         { "<leader>f", group = "[F]ind" },
         { "<leader>w", group = "[W]orkspace" },
         { "<leader>t", group = "[T]oggle" },
-        { "<leader>g", group = "[G]it", mode = { "n", "v" } },
+      },
+      win = {
+        title_pos = "center",
       },
     },
   },

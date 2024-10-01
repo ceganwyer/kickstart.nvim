@@ -6,9 +6,7 @@ vim.opt.mouse = "a"
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
-end)
+vim.schedule(function() vim.opt.clipboard = "unnamedplus" end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -66,3 +64,7 @@ vim.opt.softtabstop = 4
 -- Netrw options
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 30
+vim.g.netrw_bufsettings = "nu rnu"
+vim.g.netrw_liststyle = 3
+
+vim.g.globaltest = function() vim.notify("Hello from global test") end
