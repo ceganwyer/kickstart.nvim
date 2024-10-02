@@ -12,18 +12,22 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
-  require("lsp"), -- LSP configuration & LSP-adjacent plugins
-  require("plugins.colorschemes"), -- Color schemes
-  require("plugins.crates"), -- Rust crate managent
-  require("plugins.git"), -- Git related plugins
-  require("plugins.harpoon"), -- Harpoon
-  require("plugins.mini"), -- Collections of small modular plugins
-  require("plugins.qol"), -- Small quality of life plugins
-  require("plugins.neo-tree"), -- File tree
-  require("plugins.telescope"), -- Ultimate fuzzy finder
-  require("plugins.treesitter"), -- Tree parsing
-  require("plugins.ufo"),
-  require("plugins.which-key"), -- Keymap
+  spec = {
+    { import = "lsp" },
+    { import = "plugins" },
+  },
+  -- require("lsp"), -- LSP configuration & LSP-adjacent plugins
+  -- require("plugins.colorschemes"), -- Color schemes
+  -- require("plugins.crates"), -- Rust crate managent
+  -- require("plugins.git"), -- Git related plugins
+  -- require("plugins.harpoon"), -- Harpoon
+  -- require("plugins.mini"), -- Collections of small modular plugins
+  -- require("plugins.qol"), -- Small quality of life plugins
+  -- require("plugins.neo-tree"), -- File tree
+  -- require("plugins.telescope"), -- Ultimate fuzzy finder
+  -- require("plugins.treesitter"), -- Tree parsing
+  -- require("plugins.ufo"), -- Auto generation of folds
+  -- require("plugins.which-key"), -- Keymap popup
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
