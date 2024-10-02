@@ -1,5 +1,3 @@
--- [[ Setting options ]]
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -63,8 +61,10 @@ vim.opt.softtabstop = 4
 
 -- Netrw options
 vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 30
 vim.g.netrw_bufsettings = "nu rnu"
-vim.g.netrw_liststyle = 3
+vim.g.netrw_sizestyle = "H"
+vim.g.netrw_liststyle = 0
+vim.g.netrw_sort_sequence = [[[\/]$,*]]
+vim.g.netrw_winsize = 30
 
 vim.g.globaltest = function() vim.notify("Hello from global test") end
