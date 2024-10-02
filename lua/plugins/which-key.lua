@@ -43,6 +43,12 @@ return {
           F11 = "<F11>",
           F12 = "<F12>",
         },
+        rules = {
+          { pattern = "ind", icon = "", color = "green" },
+          { pattern = "arpoon", icon = "", color = "blue" },
+          { pattern = "uffer", icon = "󰈔", color = "cyan" },
+          { pattern = "ode", icon = "", color = "cyan" },
+        },
       },
       sort = { "local", "group", "alphanum", "mod" },
       -- Document existing key chains
@@ -51,7 +57,7 @@ return {
         { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
         { "<leader>d", group = "[D]ocument" },
         { "<leader>g", group = "[G]it", mode = { "n", "v" }, icon = { cat = "filetype", name = "git" } },
-        { "<leader>h", group = "[H]arpoon", icon = "󰈸" },
+        { "<leader>h", group = "[H]arpoon" },
         { "<leader>l", group = "[L]SP" },
         { "<leader>p", group = "[P]lugins" },
         { "<leader>r", group = "[R]ename" },

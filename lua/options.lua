@@ -66,5 +66,3 @@ vim.g.netrw_sizestyle = "H"
 vim.g.netrw_liststyle = 0
 vim.g.netrw_sort_sequence = [[[\/]$,*]]
 vim.g.netrw_winsize = 30
-
-vim.g.globaltest = function() vim.notify("Hello from global test") end

@@ -15,7 +15,7 @@ return { -- Automatic fold generation
     },
     {
       "zr",
-      function() require("ufo").openFoldExceptKinds() end,
+      function() require("ufo").openFoldsExceptKinds() end,
       "Fold less",
     },
     {
@@ -25,7 +25,12 @@ return { -- Automatic fold generation
     },
     {
       "zp",
-      function() require("ufo").peekFoldedLinesUnderCursor() end,
+      function()
+        local winid = require("ufo").peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover()
+        end
+      end,
       "Peek fold",
     },
   },
