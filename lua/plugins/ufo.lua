@@ -1,6 +1,26 @@
 return { -- Automatic fold generation
   "kevinhwang91/nvim-ufo",
-  dependencies = { "kevinhwang91/promise-async" },
+  dependencies = {
+    "kevinhwang91/promise-async",
+    {
+      "luukvbaal/statuscol.nvim",
+      config = function()
+        local builtin = require("statuscol.builtin")
+        require("statuscol").setup({
+          relculright = true,
+          segments = {
+            { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+            { text = { "%s" }, click = "v:lua.ScSa" },
+            { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+          },
+        })
+        vim.fn.sign_define("DiagnosticSignError", { text = "󰅙", texthl = "DiagnosticError" })
+        vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticHint" })
+        vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo" })
+        vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWarn" })
+      end,
+    },
+  },
   event = "BufRead",
   keys = {
     {

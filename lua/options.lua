@@ -3,9 +3,6 @@ vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 
--- Sync clipboard between OS and Neovim.
-vim.schedule(function() vim.opt.clipboard = "unnamedplus" end)
-
 -- Enable break indent
 vim.opt.breakindent = true
 vim.opt.wrap = false

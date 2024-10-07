@@ -17,6 +17,15 @@ map("<leader>q", vim.diagnostic.setloclist, "[Q]uickfix list")
 -- Open netrw
 map("<leader>e", "<cmd>Explore<cr>", "Open File [E]xplorer")
 
+-- Paste without yanking to buffer
+map("<leader>p", [["_dP]], "Paste no yank")
+
+-- Yank to system keyboard
+map("<leader>y", [["+y]], "Yank to system keyboard")
+
+-- Delete to void
+map("<leader>p", [["_d]], "Delete to void")
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which is not what someone will guess without a bit more experience.
 --
@@ -47,9 +56,3 @@ map("H", ">gv", "Move selection right", "v")
 -- Recenter screen when jumping up/down
 map("<C-d>", "<C-d>zz")
 map("<C-u>", "<C-u>zz")
-
--- Plugin mangers
-map("<leader>pi", require("lazy").install, "Lazy: [I]nstall")
-map("<leader>ps", "<cmd>Lazy<cr>", "Lazy: [S]tatus")
-map("<leader>pm", "<cmd>Mason<cr>", "[M]ason: Status")
-map("<leader>pM", "<cmd>MasonUpdate<cr>", "[M]ason: Update")
