@@ -56,3 +56,6 @@ map("H", ">gv", "Move selection right", "v")
 -- Recenter screen when jumping up/down
 map("<C-d>", "<C-d>zz")
 map("<C-u>", "<C-u>zz")
+
+-- Random toggles
+map("<leader>tw", "<CMD>set wrap<CR>", "[T]oggle [W]rap")
