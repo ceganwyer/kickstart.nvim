@@ -59,3 +59,4 @@ map("<C-u>", "<C-u>zz")
 
 -- Random toggles
 map("<leader>tw", "<CMD>set wrap<CR>", "[T]oggle [W]rap")
+map("<leader>ts", "<CMD>set spell<CR>", "[T]oggle [S]pellcheck")
