@@ -15,7 +15,9 @@ vim.g.map("<Esc>", "<cmd>nohlsearch<CR>", "Clear highlights")
 map("<leader>q", vim.diagnostic.setloclist, "[Q]uickfix list")
 
 -- Open netrw
-map("<leader>e", "<cmd>Explore<cr>", "Open File [E]xplorer")
+--map("<leader>e", "<cmd>Explore<cr>", "Open File [E]xplorer")
+-- Open Nvim-Tree
+map("<leader>e", "<cmd>NvimTreeToggle<cr>", "Open File [E]xplorer")
 
 -- Paste without yanking to buffer
 map("<leader>p", [["_dP]], "Paste no yank")
@@ -24,7 +26,7 @@ map("<leader>p", [["_dP]], "Paste no yank")
 map("<leader>y", [["+y]], "Yank to system keyboard")
 
 -- Delete to void
-map("<leader>p", [["_d]], "Delete to void")
+map("<leader>D", [["_d]], "Delete to void")
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which is not what someone will guess without a bit more experience.

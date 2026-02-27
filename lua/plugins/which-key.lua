@@ -46,9 +46,10 @@ return {
         rules = {
           { pattern = "%[b%]uffer", icon = "󰈔", color = "azure" },
           { pattern = "%[c%]ode", icon = "", color = "cyan" },
+          { pattern = "%[d%]ebug", icon = "󰃤 ", color = "red" },
           { pattern = "%[f%]ind", icon = "", color = "green" },
           { pattern = "%[h%]arpoon", icon = "", color = "blue" },
-          { pattern = "%[d%]ebug", icon = "󰃤 ", color = "red" },
+          { pattern = "%[l%]SP", icon = " ", color = "magenta" },
           { pattern = "%[t%]oggle", icon = " ", color = "yellow" },
           { pattern = "%[w%]indow", icon = " ", color = "blue" },
         },
