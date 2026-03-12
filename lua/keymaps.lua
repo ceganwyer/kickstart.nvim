@@ -1,7 +1,7 @@
--- [[ Basic Keymaps ]]
+--  [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 --
--- local helper function to make mappings easier
+--  local helper function to make mappings easier
 local map = function(keys, func, desc, mode)
   mode = mode or "n"
   vim.keymap.set(mode, keys, func, { desc = desc })
@@ -41,6 +41,12 @@ map("<leader>bn", "<cmd>bn<cr>", "[B]uffer [N]ext")
 map("<leader>bp", "<cmd>bp<cr>", "[B]uffer [P]revious")
 map("<leader>bw", "<cmd>w<cr>", "[B]uffer [W]rite")
 
+-- Navigation
+
+-- make j/k in normal mode respect wraps
+map("j", "gj", "Move Down")
+map("k", "gk", "Move Down")
+
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --  See `:help wincmd` for a list of all window commands
@@ -56,8 +62,8 @@ map("K", ":m '<-2<CR>gv=gv", "Move selection down", "v")
 map("H", ">gv", "Move selection right", "v")
 
 -- Recenter screen when jumping up/down
-map("<C-d>", "<C-d>zz")
-map("<C-u>", "<C-u>zz")
+map("<C-d>", "<C-d>zz", "Jump Down")
+map("<C-u>", "<C-u>zz", "Jump Up")
 
 -- Random toggles
 map("<leader>tw", "<CMD>set wrap<CR>", "[T]oggle [W]rap")

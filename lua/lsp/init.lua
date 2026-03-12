@@ -42,11 +42,6 @@ return {
         callback = function(event)
           local map = function(keys, func, desc, mode)
             mode = mode or "n"
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-          end
-          -- Alternative to above for mapping to <leader>l"
-          local lmap = function(keys, func, desc, mode)
-            mode = mode or "n"
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "[L]SP: " .. desc })
           end
           local builtin = require("telescope.builtin")
@@ -63,16 +58,25 @@ return {
           --  For example, in C this would take you to the header.
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-          lmap("<leader>lI", "<cmd>LspInfo<cr>", "[I]nfo")
-          lmap("<leader>la", vim.lsp.buf.code_action, "Code [A]ction", { "n", "x" })
-          lmap("<leader>lD", builtin.lsp_type_definitions, "Type [D]efinition")
-          lmap("<leader>lh", vim.lsp.buf.signature_help, "Signature [H]elp")
-          lmap("<leader>li", builtin.lsp_implementations, "[I]mplementations")
-          lmap("<leader>lr", vim.lsp.buf.rename, "[R]ename symbol")
-          lmap("<leader>lR", vim.lsp.buf.references, "[R]eferences")
-          lmap("<leader>ls", builtin.lsp_document_symbols, "Document [S]ymbols")
-          lmap("<leader>lw", builtin.lsp_workspace_symbols, "[W]orkspace Symbols")
-          lmap("<leader>lx", "<cmd>LspRestart<cr>", "Restart")
+          -- Register LSP group with whichkey
+          -- For some reason if I don't register it here, the icon for the group
+          -- doesn't work, probably because this file gets loaded before whickey.lua
+          local wk = require("which-key")
+          wk.add({
+            { "<leader>l", group = "[L]SP" },
+          }, {
+            mode = { "n" },
+          })
+          map("<leader>lI", "<cmd>LspInfo<cr>", "[I]nfo")
+          map("<leader>la", vim.lsp.buf.code_action, "Code [A]ction", { "n", "x" })
+          map("<leader>lD", builtin.lsp_type_definitions, "Type [D]efinition")
+          map("<leader>lh", vim.lsp.buf.signature_help, "Signature [H]elp")
+          map("<leader>li", builtin.lsp_implementations, "[I]mplementations")
+          map("<leader>lr", vim.lsp.buf.rename, "[R]ename symbol")
+          map("<leader>lR", vim.lsp.buf.references, "[R]eferences")
+          map("<leader>ls", builtin.lsp_document_symbols, "Document [S]ymbols")
+          map("<leader>lw", builtin.lsp_workspace_symbols, "[W]orkspace Symbols")
+          map("<leader>lx", "<cmd>LspRestart<cr>", "Restart")
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -140,6 +144,17 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        gopls = {
+          settings = {
+            gopls = {
+              hints = {
+                parameterNames = true,
+                functionTypeParameters = true,
+                rangeVariableTypes = true,
+              },
+            },
+          },
+        },
         rust_analyzer = {
           on_attach = function(_, bufnr) vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end,
           settings = {
@@ -173,6 +188,7 @@ return {
             },
           },
         },
+        marksman = {},
       }
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
@@ -190,21 +206,13 @@ return {
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-      require("mason-lspconfig").setup({
-        handlers = {
-          function(server_name)
-            -- Print statements for debugging server configs
-            -- print(server_name)
-            -- print('settings:', vim.inspect(servers[server_name]))
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
-        },
-      })
+      for name, server in pairs(servers) do
+        -- Print statements for debugging server configs
+        -- print(name)
+        -- print("settings:", vim.inspect(servers[name]))
+        vim.lsp.config(name, server)
+        vim.lsp.enable(name)
+      end
     end,
   },
 }

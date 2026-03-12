@@ -49,7 +49,7 @@ return {
           { pattern = "%[d%]ebug", icon = "󰃤 ", color = "red" },
           { pattern = "%[f%]ind", icon = "", color = "green" },
           { pattern = "%[h%]arpoon", icon = "", color = "blue" },
-          { pattern = "%[l%]SP", icon = " ", color = "magenta" },
+          { pattern = "%[l%]sp", icon = "", color = "purple" },
           { pattern = "%[t%]oggle", icon = " ", color = "yellow" },
           { pattern = "%[w%]indow", icon = " ", color = "blue" },
         },
