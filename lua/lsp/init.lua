@@ -155,6 +155,29 @@ return {
             },
           },
         },
+        golangci_lint_ls = {
+          cmd = { "golangci-lint-langserver" },
+          filetypes = { "go", "gomod" },
+          root_markers = {
+            ".golangci.yml",
+            ".golangci.yaml",
+            ".golangci.toml",
+            ".golangci.json",
+            "go.work",
+            "go.mod",
+            ".git",
+          },
+          init_options = {
+            command = {
+              "golangci-lint",
+              "run",
+              "--output.json.path",
+              "stdout",
+              "--show-stats=false",
+              "--issues-exit-code=1",
+            },
+          },
+        },
         rust_analyzer = {
           on_attach = function(_, bufnr) vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end,
           settings = {
@@ -189,6 +212,7 @@ return {
           },
         },
         marksman = {},
+        sqlls = {},
       }
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
