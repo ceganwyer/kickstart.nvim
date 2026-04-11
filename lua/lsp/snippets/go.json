@@ -1,7 +1,0 @@
-{
-    "if err != nil (test)": {
-        "prefix": "irt",
-        "body": "if err != nil {\n\treturn t.fatal(err)\n}",
-        "description": "Snippet for if err != nil for tests"
-    }
-}

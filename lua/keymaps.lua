@@ -1,15 +1,14 @@
 --  [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+--  Any Plugin-specific keymaps need to be registered along with that
+--		plugin's configuration file.
 --
---  local helper function to make mappings easier
-local map = function(keys, func, desc, mode)
-  mode = mode or "n"
-  vim.keymap.set(mode, keys, func, { desc = desc })
-end
+-- Mapping global helper function to a local for less typing
+local map = vim.g.keymap
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
-vim.g.map("<Esc>", "<cmd>nohlsearch<CR>", "Clear highlights")
+map("<Esc>", "<cmd>nohlsearch<CR>", "Clear highlights")
 
 -- Diagnostic keymaps
 map("<leader>q", vim.diagnostic.setloclist, "[Q]uickfix list")
@@ -27,6 +26,9 @@ map("<leader>y", [["+y]], "Yank to system keyboard")
 
 -- Delete to void
 map("<leader>D", [["_d]], "Delete to void")
+
+-- Restart Neovim
+map("<leader>RR", "<CMD>restart<CR>", "Restart Neovim")
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which is not what someone will guess without a bit more experience.
@@ -68,3 +70,4 @@ map("<C-u>", "<C-u>zz", "Jump Up")
 -- Random toggles
 map("<leader>tw", "<CMD>set wrap<CR>", "[T]oggle [W]rap")
 map("<leader>ts", "<CMD>set spell<CR>", "[T]oggle [S]pellcheck")
+map("<leader>tU", "<CMD>Undotree<CR>", "[T]oggle [U]ndo Tree")

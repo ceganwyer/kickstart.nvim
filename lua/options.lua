@@ -1,3 +1,4 @@
+-- Set line numbers, enable mouse support, and hide mode
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -64,3 +65,6 @@ vim.g.netrw_sizestyle = "H"
 vim.g.netrw_liststyle = 0
 vim.g.netrw_sort_sequence = [[[\/]$,*]]
 vim.g.netrw_winsize = 30
+
+-- Enable new UI
+require("vim._core.ui2").enable({})

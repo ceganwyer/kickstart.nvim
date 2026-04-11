@@ -1,5 +1,5 @@
 --[[
-My personal config based on kickstart.nvim.
+My personal config based on kickstart.nvim - updated for nvim 0.12!
 
 Took the guts and split it up into multiple files because having everything
   in one file hurts my brain. 
@@ -13,7 +13,6 @@ Structure:
     | options.lua - General config options
     | keymaps.lua - General keymaps
     | autocommands.lua - General autocommands
-    | lazy-plugins.lua - Lazy boostraping and plugin enabling
     | plugins/ - dir containig plugin definitions
     | lsp/ - dir containing lsp-specific plugins and configurations
 --]]
@@ -33,13 +32,16 @@ require("options")
 require("helpers")
 
 -- [[ Plugins ]]
-require("lazy-plugins")
+-- NOTE: Plugins now automatiaclly loaded from ./plugin dir
 
 -- [[ Keymaps ]]
 require("keymaps")
 
 -- [[ Autocommands ]]
 require("autocommands")
+
+-- [[ Diagnostics ]]
+require("diagnostics")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

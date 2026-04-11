@@ -10,8 +10,10 @@ local mygroup = augroup("Clayton", {})
 --  See `:help vim.highlight.on_yank()`
 autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-  callback = function() vim.hl.on_yank() end,
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 -- Trim whitespace on save
