@@ -1,62 +1,67 @@
+local opt = vim.opt
+
 -- Set line numbers, enable mouse support, and hide mode
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = "a"
-vim.opt.showmode = false
+opt.number = true
+opt.relativenumber = true
+opt.mouse = "a"
+opt.showmode = false
+opt.termguicolors = true -- true color support
 
 -- Enable break indent
-vim.opt.breakindent = true
-vim.opt.wrap = false
+opt.breakindent = true
+opt.wrap = false
 
 -- Save undo history
-vim.opt.undofile = true
+opt.undofile = true
 
 -- Disable swapfile and backup
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.local/state/nvim"
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.local/state/nvim"
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
--- Keep signcolumn on by default
-vim.opt.signcolumn = "yes"
 
-vim.opt.colorcolumn = "100"
+-- Keep signcolumn on by default and enable colorcolumn
+opt.signcolumn = "yes"
+opt.colorcolumn = "100"
 
 -- Decrease update time
-vim.opt.updatetime = 100
+opt.updatetime = 100
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 250
+opt.timeoutlen = 250
 
 -- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
+opt.winminwidth = 5
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+opt.scrolloff = 10
 
--- Set default tab size
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+-- Tab behaviour configuration
+opt.expandtab = true
+opt.smartindent = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.softtabstop = 4
 
 -- Netrw options
 vim.g.netrw_banner = 0

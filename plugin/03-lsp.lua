@@ -125,7 +125,7 @@ capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
-capabilities = vim.tbl_deep_extend("force", capabilities)
+--capabilities = vim.tbl_deep_extend("force", capabilities)
 
 -- Server definitions and configs
 local servers = {
